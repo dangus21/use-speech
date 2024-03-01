@@ -1,0 +1,42 @@
+{
+	"name": "use-speech-hook",
+	"version": "0.0.1",
+	"description": "Native Browser SpeechRecognition for React",
+	"scripts": {
+		"build": "tsup",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dangus21/use-speech-hook.git"
+	},
+	"keywords": [
+		"speech",
+		"speech",
+		"recognition",
+		"react"
+	],
+	"author": "dangus21",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/dangus21/use-speech-hook/issues"
+	},
+	"homepage": "https://github.com/dangus21/use-speech-hook#readme",
+	"devDependencies": {
+		"@biomejs/biome": "^1.5.3",
+		"ts-node": "^10.9.2",
+		"tsup": "^8.0.2",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@types/dom-speech-recognition": "^0.0.4",
+		"@types/react": "^18.2.61",
+		"react": "^18.2.0"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	]
+}

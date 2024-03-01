@@ -1,0 +1,74 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"noNonNullAssertion": "off",
+				"useFragmentSyntax": "error",
+				"useTemplate": "error",
+				"noUselessElse": "error"
+			},
+			"nursery": {
+				"noUnusedImports": "error",
+				"useAwait": "error"
+			},
+			"correctness": {
+				"noUnusedVariables": "error",
+				"useExhaustiveDependencies": "error"
+			},
+			"suspicious": {
+				"recommended": true
+			},
+			"a11y": {
+				"recommended": true
+			},
+			"complexity": {
+				"recommended": true
+			},
+			"security": {},
+			"performance": {}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 4,
+		"lineWidth": 80,
+		"lineEnding": "lf",
+		"ignore": [
+			"node_modules"
+		]
+	},
+	"javascript": {
+		"formatter": {
+			"enabled": true,
+			"arrowParentheses": "always",
+			"jsxQuoteStyle": "double",
+			"semicolons": "always",
+			"trailingComma": "all",
+			"quoteProperties": "asNeeded",
+			"bracketSpacing": true,
+			"bracketSameLine": false,
+			"indentWidth": 4,
+			"indentStyle": "tab",
+			"quoteStyle": "double",
+			"lineEnding": "lf",
+			"lineWidth": 80
+		}
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git"
+	},
+	"files": {
+		"ignore": [
+			"./polyfill.d.ts"
+		]
+	}
+}
