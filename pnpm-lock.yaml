@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@angus/use-speech':
+    specifier: npm:@jsr/angus__use-speech@^0.0.1
+    version: /@jsr/angus__use-speech@0.0.1
   '@types/dom-speech-recognition':
     specifier: ^0.0.4
     version: 0.0.4
@@ -381,6 +384,12 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@jsr/angus__use-speech@0.0.1:
+    resolution: {integrity: sha512-HYHWHvEzqMEMUw94HuYQLCbQEmc6af3cCRk7G5x0WO1m2Euj3Gf5wHroTjPFA5p/4JM+9tByY07Ql03TkKmYkA==, tarball: https://npm.jsr.io/~/5/@jsr/angus__use-speech/0.0.1.tgz}
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

@@ -1,9 +1,11 @@
 {
 	"name": "use-speech-hook",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Native Browser SpeechRecognition for React",
 	"scripts": {
 		"build": "tsup",
+		"jsr": "npx jsr publish",
+		"pub": "npm publish",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -29,6 +31,7 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
+		"@angus/use-speech": "npm:@jsr/angus__use-speech@^0.0.1",
 		"@types/dom-speech-recognition": "^0.0.4",
 		"@types/react": "^18.2.61",
 		"react": "^18.2.0"
