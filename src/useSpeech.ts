@@ -1,7 +1,7 @@
 /// <reference types="dom-speech-recognition/index.d.ts" />
 /// <reference types="../polyfill.d.ts" />
 
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 window.SpeechRecognition =
 	window.SpeechRecognition ||
@@ -19,7 +19,23 @@ export type UseSpeechOptions = {
 	debug?: boolean;
 };
 
-function useSpeech(options?: UseSpeechOptions) {
+export type UseSpeech = {
+	noMatch: string;
+	error: string;
+	continuousRecognitionStarted: boolean;
+	recognitionStarted: boolean;
+	transcript: string | null | undefined;
+	confidence: string;
+	setLanguage: (
+		language: SetStateAction<`${string}-${Uppercase<string>}`>,
+	) => void;
+	setIsContinuous: (isContinuous: SetStateAction<boolean>) => void;
+	startRecognition: () => void;
+	stopRecognition: () => void;
+	clearTranscript: () => void;
+};
+
+function useSpeech(options?: UseSpeechOptions): UseSpeech {
 	if (!window.SpeechRecognition) {
 		console.error("=== BROWSER NOT SUPPORTED FOR SPEECH RECOGNITION ===");
 	}
@@ -37,7 +53,7 @@ function useSpeech(options?: UseSpeechOptions) {
 	const [recognitionStarted, setRecognitionStarted] = useState(false);
 
 	const [transcript, setTranscript] = useState<string | null>(null);
-	const [confidence, setConfidence] = useState<string | null>(null);
+	const [confidence, setConfidence] = useState<string>("0%");
 
 	recognition.lang = language;
 	recognition.continuous = continuous;
