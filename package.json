@@ -31,7 +31,6 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
-		"@angus/use-speech": "npm:@jsr/angus__use-speech@^0.0.1",
 		"@types/dom-speech-recognition": "^0.0.4",
 		"@types/react": "^18.2.61",
 		"react": "^18.2.0"
