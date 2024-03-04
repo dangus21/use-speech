@@ -1,6 +1,6 @@
 {
 	"name": "use-speech-hook",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Native Browser SpeechRecognition for React",
 	"scripts": {
 		"build": "tsup",
