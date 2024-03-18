@@ -10,8 +10,6 @@ window.SpeechRecognition =
 	window.msSpeechRecognition ||
 	window.oSpeechRecognition;
 
-const recognition = new window.SpeechRecognition();
-
 export type UseSpeechOptions = {
 	initialLanguage?: `${string}-${Uppercase<string>}`;
 	isContinuous?: boolean;
@@ -27,7 +25,7 @@ export type UseSpeech = {
 	transcript: string | null | undefined;
 	confidence: string;
 	setLanguage: (
-		language: SetStateAction<`${string}-${Uppercase<string>}`>,
+		language: SetStateAction<`${string}-${Uppercase<string>}`>
 	) => void;
 	setIsContinuous: (isContinuous: SetStateAction<boolean>) => void;
 	startRecognition: () => void;
@@ -36,14 +34,16 @@ export type UseSpeech = {
 };
 
 function useSpeech(options?: UseSpeechOptions): UseSpeech {
+	const recognition = new window.SpeechRecognition();
+
 	if (!window.SpeechRecognition) {
 		console.error("=== BROWSER NOT SUPPORTED FOR SPEECH RECOGNITION ===");
 	}
 	const [language, setLanguage] = useState(
-		options?.initialLanguage || "pt-PT",
+		options?.initialLanguage || "pt-PT"
 	);
 	const [continuous, setIsContinuous] = useState(
-		options?.isContinuous || false,
+		options?.isContinuous || false
 	);
 	const [noMatch, setNoMatch] = useState("");
 	const [error, setError] = useState("");
@@ -68,28 +68,35 @@ function useSpeech(options?: UseSpeechOptions): UseSpeech {
 
 		setTranscript(result);
 		setConfidence(`${(confidence * 100).toFixed(2)}%`);
-		options?.debug &&
+		if (options?.debug) {
 			console.log({
 				result,
-				confidence: `${(confidence * 100).toFixed(2)}%`,
+				confidence: `${(confidence * 100).toFixed(2)}%`
 			});
+		}
 	};
 
 	recognition.onspeechend = () => {
 		if (!continuous) {
 			recognition.stop();
 		}
-		options?.debug && console.log("speech ended");
+		if (options?.debug) {
+			console.log("speech ended");
+		}
 	};
 
 	recognition.onnomatch = () => {
 		setNoMatch("Could not recognize");
-		options?.debug && console.log("no match");
+		if (options?.debug) {
+			console.log("no match");
+		}
 	};
 
 	recognition.onerror = (event) => {
 		setError(`Error occurred in recognition: ${event.error}`);
-		options?.debug && console.log("error occured");
+		if (options?.debug) {
+			console.log("error occured");
+		}
 	};
 
 	function startRecognition() {
@@ -99,11 +106,15 @@ function useSpeech(options?: UseSpeechOptions): UseSpeech {
 
 		recognition.start();
 		if (continuous) {
-			options?.debug && console.log("recognition started, continuous");
+			if (options?.debug) {
+				console.log("recognition started, continuous");
+			}
 			setContinuousRecognitionStarted(true);
 		}
 		if (!continuous) {
-			options?.debug && console.log("recognition started");
+			if (options?.debug) {
+				console.log("recognition started");
+			}
 			setRecognitionStarted(true);
 		}
 	}
@@ -111,12 +122,13 @@ function useSpeech(options?: UseSpeechOptions): UseSpeech {
 		recognition.stop();
 		setTranscript(null);
 		if (continuous) {
-			options?.debug &&
-				console.log("recognition stopped, it was continuous");
+			console.log("recognition stopped, it was continuous");
 			setContinuousRecognitionStarted(false);
 		}
 		if (!continuous) {
-			options?.debug && console.log("recognition stopped");
+			if (options?.debug) {
+				console.log("recognition stopped");
+			}
 			setRecognitionStarted(false);
 		}
 	}
@@ -143,7 +155,7 @@ function useSpeech(options?: UseSpeechOptions): UseSpeech {
 		setIsContinuous,
 		startRecognition,
 		stopRecognition,
-		clearTranscript,
+		clearTranscript
 	};
 }
 
